@@ -1,50 +1,76 @@
-# React + TypeScript + Vite
+# Scarab React Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React application that uses `react-router-dom` for client-side routing and `react-hot-toast` for displaying notifications. The application provides a product management interface with routes for viewing, creating, and updating products.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Product List**: View a list of all products.
+- **Add New Product**: Add a new product to the list.
+- **Update Product**: Update details for an existing product.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: JavaScript library for building user interfaces.
+- **React Router**: Enables client-side routing.
+- **React Hot Toast**: Provides elegant notifications.
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v14+ recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/scarab-react-app.git
+   cd scarab-react-app
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Start the application**:
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
+
+   The app should now be running on `http://localhost:3000`.
+
+## File Structure
+
+```plaintext
+src/
+├── components/
+│   └── MainLayout.js   # Main layout component wrapping all pages
+├── pages/
+│   ├── products/
+│   │   ├── index.js    # Product list page
+│   │   ├── new.js      # New product page
+│   │   └── update/
+│   │       └── [id].js # Update product page by ID
+├── App.js              # Application's root component with routing
+└── index.js            # Entry point
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Usage
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Routes
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- `/` - Redirects to `/products`
+- `/products` - Displays a list of products
+- `/products/new` - Form for creating a new product
+- `/products/update/:id` - Form for updating a product by ID
+
+### Notifications
+
+`react-hot-toast` is used for notifications throughout the app, positioned at the top center of the page.
+
